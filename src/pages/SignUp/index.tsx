@@ -5,7 +5,7 @@ import {
   KeyboardAvoidingView,
   ScrollView,
   Platform,
-  TextInput
+  TextInput,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import {useNavigation} from '@react-navigation/native';
@@ -46,10 +46,30 @@ const SignUp: React.FC = () => {
               onSubmit={(data) => {
                 console.log(data);
               }}>
+              <Input
+                name="name"
+                autoCapitalize="words"
+                returnKeyType="next"
+                onSubmitEditing={() => {
+                  emailInputRef.current?.focus();
+                }}
+                icon="user"
+                placeholder="Nome"
+              />
 
-              <Input name="name" autoCapitalize="words" returnKeyType="next" onSubmitEditing={() => {emailInputRef.current?.focus()}} icon="user" placeholder="Nome" />
-
-              <Input name="email" ref={emailInputRef} autoCorrect={false} onSubmitEditing={() => {passwordInputRef.current?.focus()}} autoCapitalize="none" keyboardType="email-address" icon="mail" returnKeyType="next" placeholder="E-mail" />
+              <Input
+                name="email"
+                ref={emailInputRef}
+                autoCorrect={false}
+                onSubmitEditing={() => {
+                  passwordInputRef.current?.focus();
+                }}
+                autoCapitalize="none"
+                keyboardType="email-address"
+                icon="mail"
+                returnKeyType="next"
+                placeholder="E-mail"
+              />
 
               <Input
                 name="password"
